@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Processor Type="SynthChain" ID="justui" Bypassed="0" Gain="1.0" Balance="0.0"
+           VoiceLimit="64.0" KillFadeTime="20.0" IconColour="0" packageName=""
+           BuildVersion="650">
+  <ChildProcessors>
+    <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
+      <ChildProcessors>
+        <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
+          <ChildProcessors/>
+          <Content>
+            <Control type="ScriptSlider" id="Knob23" value="0.0"/>
+            <Control type="ScriptSliderPack" id="SliderPack3" value="0.0" data="4.WOJL+."/>
+            <Control type="ScriptTable" id="Table3" value="0.0" data="180...............vOzsDG9DQDQ7C...vOVABi9fHhH3C...vON0um9XlYl8C...vOCDFo9fHhH3C...vOPXj19PoOo6C...vOtDm59nOoO8C...vOhS869.jii0C...vO+dtE+fiii2C...vO6XEH+j9j97C...vOQ40P+vppp3C...vO9bKQ+.1B1xC...vOMyLS+XlYl8C...vOPXjV+PeRe5C...vO...f+.........vO"/>
+            <Control type="ScriptSlider" id="Knob9" value="1.0"/>
+            <Control type="ScriptSlider" id="Knob10" value="0.0"/>
+            <Control type="ScriptSlider" id="Knob11" value="0.6399999856948853"/>
+            <Control type="ScriptSlider" id="Knob12" value="0.5099999904632568"/>
+            <Control type="ScriptSlider" id="Knob13" value="0.4900000095367432"/>
+            <Control type="ScriptSlider" id="Knob15" value="0.0"/>
+            <Control type="ScriptSlider" id="Knob20" value="8.0"/>
+            <Control type="ScriptSlider" id="Knob21" value="0.4799999892711639"/>
+            <Control type="ScriptSlider" id="Knob22" value="130.5"/>
+            <Control type="ScriptSlider" id="Knob24" value="17.79000091552734"/>
+            <Control type="ScriptSlider" id="Knob36" value="1.0"/>
+            <Control type="ScriptSliderPack" id="SliderPack1" value="0.0" data="4.6QgK+."/>
+            <Control type="ScriptTable" id="Table1" value="0.0" data="144...............vORZGq6....9C...vO62ys8fHhH3C...vOetkX9LyLy7C...vOwHsi9.3B1vC...vOpeO29zmzm7C...vOtDm59.........vOOVAB+3t6t6C...vOyLyL+.........vOnaIN+....9C...vOLR6X+DQDQ7C...vO...f+LyLy7C...vO"/>
+            <Control type="ScriptSlider" id="Knob1" value="0.449999988079071"/>
+            <Control type="ScriptSlider" id="Knob3" value="0.0"/>
+            <Control type="ScriptSlider" id="Knob5" value="7.0"/>
+            <Control type="ScriptSlider" id="Knob6" value="0.8600000143051147"/>
+            <Control type="ScriptSlider" id="Knob7" value="0.09000000357627869"/>
+            <Control type="ScriptSlider" id="Knob8" value="0.4900000095367432"/>
+            <Control type="ScriptSlider" id="Knob25" value="0.0"/>
+            <Control type="ScriptSlider" id="Knob26" value="615.8800048828125"/>
+            <Control type="ScriptSlider" id="Knob27" value="1.0"/>
+            <Control type="ScriptSlider" id="Knob28" value="16.0"/>
+            <Control type="ScriptSlider" id="Knob29" value="0.0"/>
+            <Control type="ScriptButton" id="ScriptButton1" value="0.0"/>
+            <Control type="ScriptSliderPack" id="SliderPack2" value="0.0" data="4.....+."/>
+            <Control type="ScriptTable" id="Table2" value="0.0" data="144...............vOl3Te9fHhH5C...vOhxqg9v6t65C...vON0um9.u6t4C...vOyqgx9LyLy7C...vO1P409.u6t4C...vOhS869fHhH1C...vOwHsC+.jii0C...vOFocL+....9C...vOnaIN+vLyL6C...vOSbpe+....9C...vO...f+.........vO"/>
+            <Control type="ScriptSlider" id="Knob2" value="0.1800000071525574"/>
+            <Control type="ScriptSlider" id="Knob16" value="1.0"/>
+            <Control type="ScriptSlider" id="Knob18" value="1.0"/>
+            <Control type="ScriptSlider" id="Knob19" value="1.0"/>
+            <Control type="ScriptSlider" id="Knob30" value="0.0"/>
+            <Control type="ScriptSlider" id="Knob31" value="16.0"/>
+            <Control type="ScriptSlider" id="Knob32" value="-1.0"/>
+            <Control type="ScriptSlider" id="Knob33" value="218.4000091552734"/>
+            <Control type="ScriptSlider" id="Knob34" value="97.80000305175781"/>
+            <Control type="ScriptSlider" id="Knob17" value="0.0"/>
+            <Control type="ScriptSliderPack" id="SliderPack4" value="0.0" data="4.MyLy9."/>
+            <Control type="ScriptSlider" id="Knob35" value="0.6700000166893005"/>
+            <Control type="ScriptSlider" id="Knob37" value="16.0"/>
+            <Control type="ScriptSlider" id="Knob4" value="1.0"/>
+          </Content>
+          <UIData Source="justuiUIData"/>
+        </Processor>
+      </ChildProcessors>
+    </Processor>
+    <Processor Type="ModulatorChain" ID="GainModulation" Bypassed="0" Intensity="1.0">
+      <ChildProcessors/>
+    </Processor>
+    <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="1" Intensity="0.0">
+      <ChildProcessors/>
+    </Processor>
+    <Processor Type="EffectChain" ID="FX" Bypassed="0">
+      <ChildProcessors/>
+    </Processor>
+    <Processor Type="AudioLooper" ID="Audio Loop Player1" Bypassed="0" Gain="0.103514201939106"
+               Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
+               SyncMode="1.0" PitchTracking="0.0" LoopEnabled="1.0" RootNote="46.0"
+               SampleStartMod="0.0" Reversed="1.0" FileName="/Users/rick/Library/Application Support/modularsamples/oi grandad/AudioFiles/Chords/edust_maj-7-9-11-13.wav"
+               min="0" max="682632" loopStart="0" loopEnd="682632">
+      <ChildProcessors>
+        <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
+          <ChildProcessors/>
+        </Processor>
+        <Processor Type="ModulatorChain" ID="GainModulation" Bypassed="0" Intensity="1.0">
+          <ChildProcessors>
+            <Processor Type="SimpleEnvelope" ID="DefaultEnvelope1" Bypassed="0" Monophonic="0.0"
+                       Retrigger="1.0" Intensity="1.0" Attack="5.0" Release="10.0" LinearMode="1.0">
+              <ChildProcessors>
+                <Processor Type="ModulatorChain" ID="Attack Time Modulation" Bypassed="0"
+                           Intensity="1.0">
+                  <ChildProcessors/>
+                </Processor>
+              </ChildProcessors>
+            </Processor>
+          </ChildProcessors>
+        </Processor>
+        <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="0" Intensity="0.0">
+          <ChildProcessors/>
+        </Processor>
+        <Processor Type="EffectChain" ID="FX" Bypassed="0">
+          <ChildProcessors/>
+        </Processor>
+      </ChildProcessors>
+      <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+    </Processor>
+  </ChildProcessors>
+  <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+  <macro_controls>
+    <macro name="Macro 1" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 2" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 3" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 4" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 5" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 6" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 7" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 8" value="0.0" midi_cc="-1"/>
+  </macro_controls>
+  <MidiAutomation/>
+  <MPEData Enabled="0"/>
+</Processor>
