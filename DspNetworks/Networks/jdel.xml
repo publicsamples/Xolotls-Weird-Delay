@@ -7,21 +7,24 @@
         <Nodes>
           <Node ID="chain1" FactoryPath="container.chain" Bypassed="0">
             <Nodes>
-              <Node ID="pma" FactoryPath="control.pma" Bypassed="0">
+              <Node ID="smoothed_parameter" FactoryPath="control.smoothed_parameter"
+                    Bypassed="0">
+                <Properties>
+                  <Property ID="Mode" Value="Linear Ramp"/>
+                </Properties>
                 <ModulationTargets>
                   <Connection NodeId="tempo_sync2" ParameterId="Tempo"/>
                   <Connection NodeId="tempo_sync2" ParameterId="UnsyncedTime"/>
+                  <Connection NodeId="fix_delay1" ParameterId="DelayTime"/>
                 </ModulationTargets>
                 <Parameters>
                   <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                  <Parameter MinValue="-1.0" MaxValue="1.0" ID="Multiply" Value="1.0"/>
-                  <Parameter MinValue="-1.0" MaxValue="1.0" ID="Add" Value="0"/>
+                  <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                             ID="SmoothingTime" Automated="1"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
                 </Parameters>
               </Node>
               <Node ID="tempo_sync2" FactoryPath="control.tempo_sync" Bypassed="0">
-                <ModulationTargets>
-                  <Connection NodeId="jdelay1" ParameterId="DelayTime"/>
-                </ModulationTargets>
                 <Parameters>
                   <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Tempo" Automated="1"/>
                   <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="Multiplier"
@@ -34,66 +37,25 @@
             </Nodes>
             <Parameters/>
           </Node>
-          <Node ID="chain3" FactoryPath="container.chain" Bypassed="0">
+          <Node ID="fix8_block" FactoryPath="container.fix8_block" Bypassed="0">
             <Nodes>
-              <Node ID="pma1" FactoryPath="control.pma" Bypassed="0">
-                <ModulationTargets>
-                  <Connection NodeId="tempo_sync3" ParameterId="Tempo"/>
-                  <Connection NodeId="tempo_sync3" ParameterId="UnsyncedTime"/>
-                </ModulationTargets>
+              <Node ID="receive2" FactoryPath="routing.receive" Bypassed="0">
                 <Parameters>
-                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                  <Parameter MinValue="-1.0" MaxValue="1.0" ID="Multiply" Value="1.0"/>
-                  <Parameter MinValue="-1.0" MaxValue="1.0" ID="Add" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Feedback" Automated="1"/>
                 </Parameters>
               </Node>
-              <Node ID="tempo_sync3" FactoryPath="control.tempo_sync" Bypassed="0">
-                <ModulationTargets>
-                  <Connection NodeId="jdelay1" ParameterId="Limit"/>
-                </ModulationTargets>
+              <Node ID="fix_delay1" FactoryPath="core.fix_delay" Bypassed="0">
                 <Parameters>
-                  <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Tempo" Automated="1"/>
-                  <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="Multiplier"
-                             Automated="1"/>
-                  <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Automated="1"/>
                   <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                             ID="UnsyncedTime" Automated="1"/>
+                             SkewFactor="0.3010300099849701" ID="DelayTime" Automated="1"/>
+                  <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="FadeTime"
+                             Automated="1"/>
                 </Parameters>
               </Node>
-            </Nodes>
-            <Parameters/>
-          </Node>
-          <Node ID="chain4" FactoryPath="container.chain" Bypassed="0">
-            <Nodes>
-              <Node ID="fix32_block" FactoryPath="container.fix32_block" Bypassed="0">
-                <Nodes>
-                  <Node ID="receive" FactoryPath="routing.receive" Bypassed="0">
-                    <Parameters>
-                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Feedback" Automated="1"/>
-                    </Parameters>
-                  </Node>
-                  <Node ID="jdelay1" FactoryPath="jdsp.jdelay" Bypassed="0">
-                    <Parameters>
-                      <Parameter MinValue="0.0" MaxValue="1000.0" SkewFactor="0.3010300099849701"
-                                 ID="Limit" Automated="1"/>
-                      <Parameter MinValue="0.0" MaxValue="1000.0" SkewFactor="0.3010300099849701"
-                                 ID="DelayTime" Automated="1"/>
-                    </Parameters>
-                  </Node>
-                  <Node ID="smoother1" FactoryPath="core.smoother" Bypassed="0">
-                    <Parameters>
-                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                 SkewFactor="0.2313782125711441" ID="SmoothingTime" Automated="1"/>
-                      <Parameter MinValue="0.0" MaxValue="1.0" ID="DefaultValue" Automated="1"/>
-                    </Parameters>
-                  </Node>
-                  <Node ID="send" FactoryPath="routing.send" Bypassed="0">
-                    <Properties>
-                      <Property ID="Connection" Value="receive"/>
-                    </Properties>
-                    <Parameters/>
-                  </Node>
-                </Nodes>
+              <Node ID="send2" FactoryPath="routing.send" Bypassed="0">
+                <Properties>
+                  <Property ID="Connection" Value="receive2"/>
+                </Properties>
                 <Parameters/>
               </Node>
             </Nodes>
@@ -104,46 +66,35 @@
       </Node>
     </Nodes>
     <Parameters>
-      <Parameter ID="dtime" MinValue="0.0" MaxValue="1.0" Value="9.0">
+      <Parameter ID="dtime" MinValue="0.0" MaxValue="1.0" Value="0.1899005126953125">
         <Connections>
-          <Connection NodeId="pma" ParameterId="Value"/>
+          <Connection NodeId="smoothed_parameter" ParameterId="Value"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Limit" MinValue="0.0" MaxValue="1.0" Value="0.1238651733398437">
+      <Parameter ID="fade" MinValue="0.0" MaxValue="1024.0" Value="503.0" StepSize="1.0">
         <Connections>
-          <Connection NodeId="pma1" ParameterId="Value"/>
+          <Connection NodeId="fix_delay1" ParameterId="FadeTime"/>
         </Connections>
       </Parameter>
-      <Parameter ID="dmulti" MinValue="1.0" MaxValue="16.0" StepSize="1.0" Value="9.0">
+      <Parameter ID="dmulti" MinValue="1.0" MaxValue="16.0" StepSize="1.0" Value="1.0">
         <Connections>
           <Connection NodeId="tempo_sync2" ParameterId="Multiplier"/>
         </Connections>
       </Parameter>
-      <Parameter ID="limmulti" MinValue="1.0" MaxValue="16.0" StepSize="1.0" Value="7.0">
-        <Connections>
-          <Connection NodeId="tempo_sync3" ParameterId="Multiplier"/>
-        </Connections>
-      </Parameter>
-      <Parameter ID="sync" MinValue="0.0" MaxValue="1.0" StepSize="1.0" Value="1.0">
+      <Parameter ID="sync" MinValue="0.0" MaxValue="1.0" StepSize="1.0" Value="0.0">
         <Connections>
           <Connection NodeId="tempo_sync2" ParameterId="Enabled"/>
-          <Connection NodeId="tempo_sync3" ParameterId="Enabled"/>
         </Connections>
       </Parameter>
-      <Parameter ID="ignore" MinValue="0.0" MaxValue="1.0" Value="0.0">
+      <Parameter ID="smooth" MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                 Value="628.0000093579291">
         <Connections>
-          <Connection NodeId="smoother1" ParameterId="DefaultValue"/>
+          <Connection NodeId="smoothed_parameter" ParameterId="SmoothingTime"/>
         </Connections>
       </Parameter>
-      <Parameter ID="smooth" MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                 SkewFactor="0.2313782125711441" Value="1.0">
+      <Parameter ID="feedbk" MinValue="0.0" MaxValue="1.0" Value="0.0383504638671875">
         <Connections>
-          <Connection NodeId="smoother1" ParameterId="SmoothingTime"/>
-        </Connections>
-      </Parameter>
-      <Parameter ID="feedbk" MinValue="0.0" MaxValue="1.0" Value="0.428984130859375">
-        <Connections>
-          <Connection NodeId="receive" ParameterId="Feedback"/>
+          <Connection NodeId="receive2" ParameterId="Feedback"/>
         </Connections>
       </Parameter>
     </Parameters>

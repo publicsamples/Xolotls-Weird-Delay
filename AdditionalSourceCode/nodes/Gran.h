@@ -55,8 +55,7 @@ using fix8_block_t_ = container::chain<parameter::empty,
                                        wrap::fix<2, pma_t<NV>>, 
                                        tempo_sync_t<NV>, 
                                        smoothed_parameter_t<NV>, 
-                                       project::granular<NV>, 
-                                       core::smoother<NV>>;
+                                       project::granular<NV>>;
 
 template <int NV>
 using fix8_block_t = wrap::fix_block<8, fix8_block_t_<NV>>;
@@ -81,7 +80,8 @@ template <int NV>
 using pos = parameter::plain<Gran_impl::smoothed_parameter_t<NV>, 
                              0>;
 template <int NV>
-using Smooth = parameter::plain<core::smoother<NV>, 0>;
+using Smooth = parameter::plain<Gran_impl::smoothed_parameter_t<NV>, 
+                                1>;
 template <int NV>
 using Gran_t_plist = parameter::list<grainsize<NV>, 
                                      density<NV>, 
@@ -125,8 +125,8 @@ template <int NV> struct instance: public Gran_impl::Gran_t_<NV>
             0x0000, 0x8000, 0x003F, 0x8000, 0x0041, 0x8000, 0x003F, 0x8000, 
             0x003F, 0x8000, 0x5B3F, 0x0005, 0x0000, 0x6F70, 0x0073, 0x0000, 
             0x0000, 0x0000, 0x3F80, 0x0000, 0x3F80, 0x0000, 0x3F80, 0x0000, 
-            0x0000, 0x065B, 0x0000, 0x5300, 0x6F6D, 0x746F, 0x0068, 0x0000, 
-            0x0000, 0x0000, 0x44FA, 0x0000, 0x42CA, 0xEE69, 0x3E6C, 0xCCCD, 
+            0x0000, 0x065B, 0x0000, 0x5300, 0x6F6D, 0x746F, 0x0068, 0xCCCD, 
+            0x3DCC, 0x0000, 0x447A, 0x0000, 0x42CA, 0x0000, 0x3F80, 0xCCCD, 
             0x3DCC, 0x0000
 		};
 	};
@@ -140,7 +140,6 @@ template <int NV> struct instance: public Gran_impl::Gran_t_<NV>
 		auto& tempo_sync = this->getT(0).getT(1);         // Gran_impl::tempo_sync_t<NV>
 		auto& smoothed_parameter = this->getT(0).getT(2); // Gran_impl::smoothed_parameter_t<NV>
 		auto& faust = this->getT(0).getT(3);              // project::granular<NV>
-		auto& smoother = this->getT(0).getT(4);           // core::smoother<NV>
 		
 		// Parameter Connections -------------------------------------------------------------------
 		
@@ -156,7 +155,7 @@ template <int NV> struct instance: public Gran_impl::Gran_t_<NV>
 		
 		this->getParameterT(5).connectT(0, smoothed_parameter); // pos -> smoothed_parameter::Value
 		
-		this->getParameterT(6).connectT(0, smoother); // Smooth -> smoother::SmoothingTime
+		this->getParameterT(6).connectT(0, smoothed_parameter); // Smooth -> smoothed_parameter::SmoothingTime
 		
 		// Modulation Connections ------------------------------------------------------------------
 		
@@ -176,18 +175,15 @@ template <int NV> struct instance: public Gran_impl::Gran_t_<NV>
 		; // tempo_sync::Enabled is automated
 		; // tempo_sync::UnsyncedTime is automated
 		
-		;                                           // smoothed_parameter::Value is automated
-		smoothed_parameter.setParameterT(1, 530.1); // control::smoothed_parameter::SmoothingTime
-		smoothed_parameter.setParameterT(2, 1.);    // control::smoothed_parameter::Enabled
+		;                                        // smoothed_parameter::Value is automated
+		;                                        // smoothed_parameter::SmoothingTime is automated
+		smoothed_parameter.setParameterT(2, 1.); // control::smoothed_parameter::Enabled
 		
 		;                              // faust::decal is automated
 		;                              // faust::feedback is automated
 		;                              // faust::population is automated
 		faust.setParameterT(3, 1.002); // core::faust::speed
 		;                              // faust::taille is automated
-		
-		;                              // smoother::SmoothingTime is automated
-		smoother.setParameterT(1, 0.); // core::smoother::DefaultValue
 		
 		this->setParameterT(0, 0.719944);
 		this->setParameterT(1, 1.);

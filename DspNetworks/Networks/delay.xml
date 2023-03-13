@@ -17,7 +17,7 @@
                   </DisplayBuffers>
                 </ComplexData>
                 <Parameters>
-                  <Parameter MinValue="0.0" MaxValue="16.0" StepSize="1.0" ID="Index" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="16.0" StepSize="1.0" ID="Index" Automated="1"/>
                 </Parameters>
               </Node>
               <Node ID="pma" FactoryPath="control.pma" Bypassed="0">
@@ -35,7 +35,7 @@
           </Node>
           <Node ID="chain3" FactoryPath="container.chain" Bypassed="0">
             <Nodes>
-              <Node ID="delay" FactoryPath="container.split" Bypassed="0">
+              <Node ID="delay" FactoryPath="container.split" Bypassed="0" Folded="1">
                 <Nodes>
                   <Node ID="chain4" FactoryPath="container.chain" Bypassed="0">
                     <Nodes>
@@ -74,7 +74,7 @@
                           <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
                         </Parameters>
                         <ModulationTargets>
-                          <Connection NodeId="jdel" ParameterId="dtime"/>
+                          <Connection NodeId="jdel2" ParameterId="dtime"/>
                         </ModulationTargets>
                       </Node>
                     </Nodes>
@@ -93,7 +93,7 @@
                           <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
                         </Parameters>
                         <ModulationTargets>
-                          <Connection NodeId="jdel" ParameterId="smooth"/>
+                          <Connection NodeId="jdel2" ParameterId="smooth"/>
                         </ModulationTargets>
                       </Node>
                     </Nodes>
@@ -114,35 +114,7 @@
                               <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
                             </Parameters>
                             <ModulationTargets>
-                              <Connection NodeId="input_toggle2" ParameterId="Value1"/>
-                            </ModulationTargets>
-                          </Node>
-                          <Node ID="clone_cable1" FactoryPath="control.clone_cable" Bypassed="0">
-                            <Properties>
-                              <Property ID="Mode" Value="Triangle"/>
-                            </Properties>
-                            <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="NumClones"
-                                         Value="16.0"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
-                            </Parameters>
-                            <ModulationTargets>
-                              <Connection NodeId="input_toggle2" ParameterId="Value2"/>
-                            </ModulationTargets>
-                          </Node>
-                          <Node ID="clone_cable2" FactoryPath="control.clone_cable" Bypassed="0">
-                            <Properties>
-                              <Property ID="Mode" Value="Spread"/>
-                            </Properties>
-                            <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="NumClones"
-                                         Value="1.0"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
-                            </Parameters>
-                            <ModulationTargets>
-                              <Connection NodeId="input_toggle2" ParameterId="Input"/>
+                              <Connection NodeId="jdel2" ParameterId="dmulti"/>
                             </ModulationTargets>
                           </Node>
                         </Nodes>
@@ -164,7 +136,7 @@
                           <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
                         </Parameters>
                         <ModulationTargets>
-                          <Connection NodeId="jdel" ParameterId="sync"/>
+                          <Connection NodeId="jdel2" ParameterId="sync"/>
                         </ModulationTargets>
                       </Node>
                     </Nodes>
@@ -183,7 +155,7 @@
                           <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
                         </Parameters>
                         <ModulationTargets>
-                          <Connection NodeId="jdel" ParameterId="feedbk"/>
+                          <Connection NodeId="jdel2" ParameterId="fade"/>
                         </ModulationTargets>
                       </Node>
                     </Nodes>
@@ -206,7 +178,6 @@
                       </Node>
                       <Node ID="pma1" FactoryPath="control.pma" Bypassed="0">
                         <ModulationTargets>
-                          <Connection NodeId="clone_cable3" ParameterId="Value"/>
                           <Connection NodeId="dfade" ParameterId="Value"/>
                         </ModulationTargets>
                         <Parameters>
@@ -228,35 +199,7 @@
                               <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
                             </Parameters>
                             <ModulationTargets>
-                              <Connection NodeId="input_toggle3" ParameterId="Value1"/>
-                            </ModulationTargets>
-                          </Node>
-                          <Node ID="clone_cable3" FactoryPath="control.clone_cable" Bypassed="0">
-                            <Properties>
-                              <Property ID="Mode" Value="Random"/>
-                            </Properties>
-                            <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="NumClones"
-                                         Value="16.0"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
-                            </Parameters>
-                            <ModulationTargets>
-                              <Connection NodeId="input_toggle3" ParameterId="Value2"/>
-                            </ModulationTargets>
-                          </Node>
-                          <Node ID="clone_cable4" FactoryPath="control.clone_cable" Bypassed="0">
-                            <Properties>
-                              <Property ID="Mode" Value="Fixed"/>
-                            </Properties>
-                            <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="NumClones"
-                                         Value="1.0"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
-                            </Parameters>
-                            <ModulationTargets>
-                              <Connection NodeId="input_toggle3" ParameterId="Input"/>
+                              <Connection NodeId="jdel2" ParameterId="feedbk"/>
                             </ModulationTargets>
                           </Node>
                         </Nodes>
@@ -277,9 +220,6 @@
                           <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
                           <Parameter MinValue="0.0" MaxValue="1.0" ID="Gamma" Value="0.0"/>
                         </Parameters>
-                        <ModulationTargets>
-                          <Connection NodeId="jdel" ParameterId="limmulti"/>
-                        </ModulationTargets>
                       </Node>
                     </Nodes>
                     <Parameters/>
@@ -477,7 +417,7 @@
                 </Nodes>
                 <Parameters/>
               </Node>
-              <Node ID="pitch" FactoryPath="container.split" Bypassed="0" Folded="1">
+              <Node ID="pitch" FactoryPath="container.split" Bypassed="0">
                 <Nodes>
                   <Node ID="chain19" FactoryPath="container.chain" Bypassed="0">
                     <Nodes>
@@ -672,7 +612,8 @@
                 </Nodes>
                 <Parameters/>
               </Node>
-              <Node ID="split6" FactoryPath="container.split" Bypassed="0" ShowParameters="1">
+              <Node ID="split6" FactoryPath="container.split" Bypassed="0" ShowParameters="1"
+                    Folded="1">
                 <Nodes>
                   <Node ID="chain25" FactoryPath="container.chain" Bypassed="0">
                     <Nodes>
@@ -793,7 +734,7 @@
         <Parameters/>
       </Node>
       <Node ID="dry_wet_mixer" FactoryPath="control.xfader" Bypassed="0"
-            NodeColour="4284979568">
+            NodeColour="4284979568" Folded="1">
         <Properties>
           <Property ID="NumParameters" Value="2"/>
           <Property ID="Mode" Value="Linear"/>
@@ -837,7 +778,8 @@
               <Node ID="softbypass_switch6" FactoryPath="container.chain" ShowParameters="1"
                     Bypassed="0">
                 <Nodes>
-                  <Node ID="switcher" FactoryPath="control.xfader" Bypassed="0" NodeColour="4284979565">
+                  <Node ID="switcher" FactoryPath="control.xfader" Bypassed="0" NodeColour="4284979565"
+                        Folded="1">
                     <Properties>
                       <Property ID="NumParameters" Value="5"/>
                       <Property ID="Mode" Value="Switch"/>
@@ -884,506 +826,220 @@
                                 ShowParameters="1">
                             <Nodes>
                               <Node ID="clone_child" FactoryPath="container.chain" Bypassed="0" NodeColour="4287927444"
-                                    ShowParameters="1">
+                                    ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle2" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle3" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel2" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child15" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child30" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle32" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel15" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle33" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel15" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel15" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel32" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child14" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child27" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle30" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel14" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle31" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel14" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel14" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel29" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child13" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child26" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle28" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel13" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle29" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel13" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel13" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel28" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child12" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child25" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle26" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel12" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle27" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel12" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel12" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel27" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child11" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child24" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle24" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel11" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle25" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel11" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel11" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel26" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child10" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child23" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle22" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel10" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle23" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel10" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel10" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel25" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child9" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child22" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle20" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel9" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle21" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel9" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel9" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel24" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child8" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child21" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle18" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel8" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle19" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel8" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel8" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel23" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child7" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child20" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle16" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel7" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle17" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel7" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel7" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel22" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child6" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child19" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle14" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel6" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle15" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel6" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel6" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel21" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child5" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child18" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle12" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel5" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle13" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel5" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel5" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel20" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
                                 </Nodes>
                                 <Parameters/>
                               </Node>
-                              <Node ID="clone_child4" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                              <Node ID="clone_child17" FactoryPath="container.chain" Bypassed="0"
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle10" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel4" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle11" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel4" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel4" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel19" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
@@ -1391,38 +1047,16 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone_child3" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle8" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel3" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle9" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel3" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel3" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel5" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
@@ -1430,38 +1064,16 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone_child2" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle6" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel2" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle7" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel2" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel2" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel4" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
@@ -1469,38 +1081,16 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone_child1" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" ShowParameters="1">
+                                    NodeColour="4287927444" ShowParameters="1" Folded="1">
                                 <Nodes>
-                                  <Node ID="input_toggle4" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel1" ParameterId="dmulti"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="input_toggle5" FactoryPath="control.input_toggle" Bypassed="0">
-                                    <ModulationTargets>
-                                      <Connection NodeId="jdel1" ParameterId="Limit"/>
-                                    </ModulationTargets>
-                                    <Parameters>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Input" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
-                                    </Parameters>
-                                  </Node>
-                                  <Node ID="jdel1" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
+                                  <Node ID="jdel3" FactoryPath="project.jdel" Bypassed="0" Frozen="1">
                                     <Parameters>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="dtime" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Limit" Automated="1"/>
+                                      <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="fade" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="dmulti" Automated="1"/>
-                                      <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="limmulti" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="sync" Automated="1"/>
-                                      <Parameter MinValue="0.0" MaxValue="1.0" ID="ignore" Value="1.0"/>
-                                      <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                                                 SkewFactor="0.2313782125711441" ID="smooth" Automated="1"/>
+                                      <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                                 ID="smooth" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="feedbk" Automated="1"/>
                                     </Parameters>
                                   </Node>
@@ -1509,7 +1099,7 @@
                               </Node>
                             </Nodes>
                             <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Value="16.0"/>
+                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Automated="1"/>
                               <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="SplitSignal"
                                          Value="2.0"/>
                             </Parameters>
@@ -1864,7 +1454,7 @@
                               </Node>
                             </Nodes>
                             <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Value="16.0"/>
+                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Automated="1"/>
                               <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="SplitSignal"
                                          Value="2.0"/>
                             </Parameters>
@@ -2152,7 +1742,7 @@
                               </Node>
                             </Nodes>
                             <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Value="16.0"/>
+                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Automated="1"/>
                               <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="SplitSignal"
                                          Value="2.0"/>
                             </Parameters>
@@ -2183,7 +1773,7 @@
                             </Properties>
                             <Nodes>
                               <Node ID="clone2_child" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2191,6 +1781,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2199,7 +1792,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2210,7 +1803,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child15" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle47" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2218,6 +1811,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter15" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter15" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2226,7 +1822,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2237,7 +1833,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child14" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle46" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2245,6 +1841,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter14" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter14" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2253,7 +1852,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2264,7 +1863,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child13" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle45" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2272,6 +1871,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter13" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter13" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2280,7 +1882,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2291,7 +1893,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child12" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle44" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2299,6 +1901,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter12" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter12" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2307,7 +1912,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2318,7 +1923,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child11" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle43" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2326,6 +1931,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter11" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter11" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2334,7 +1942,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2345,7 +1953,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child10" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle42" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2353,6 +1961,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter10" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter10" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2361,7 +1972,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2372,7 +1983,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child9" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle41" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2380,6 +1991,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter9" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter9" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2388,7 +2002,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2399,7 +2013,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child8" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle40" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2407,6 +2021,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter8" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter8" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2415,7 +2032,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2426,7 +2043,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child7" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle39" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2434,6 +2051,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter7" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter7" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2442,7 +2062,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2453,7 +2073,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child6" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle38" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2461,6 +2081,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter6" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter6" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2469,7 +2092,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2480,7 +2103,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child5" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle37" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2488,6 +2111,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter5" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter5" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2496,7 +2122,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2507,7 +2133,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child4" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle36" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2515,6 +2141,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter4" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter4" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2523,7 +2152,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2534,7 +2163,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child3" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle35" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2542,6 +2171,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter3" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter3" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2550,7 +2182,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2561,7 +2193,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child2" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle34" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2569,6 +2201,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter2" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter2" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2577,7 +2212,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2588,7 +2223,7 @@
                                 <Parameters/>
                               </Node>
                               <Node ID="clone2_child1" FactoryPath="container.chain" Bypassed="0"
-                                    NodeColour="4287927444" Folded="1">
+                                    NodeColour="4287927444">
                                 <Nodes>
                                   <Node ID="input_toggle1" FactoryPath="control.input_toggle" Bypassed="0">
                                     <Parameters>
@@ -2596,6 +2231,9 @@
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value1" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="1.0" ID="Value2" Automated="1"/>
                                     </Parameters>
+                                    <ModulationTargets>
+                                      <Connection NodeId="pitchshifter1" ParameterId="pich"/>
+                                    </ModulationTargets>
                                   </Node>
                                   <Node ID="pitchshifter1" FactoryPath="project.pitchshifter" Bypassed="0"
                                         Frozen="1">
@@ -2604,7 +2242,7 @@
                                       <Parameter MinValue="-12.0" MaxValue="12.0" StepSize="0.1000000014901161"
                                                  ID="shift" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="12.0" StepSize="0.009999999776482582"
-                                                 ID="pich"/>
+                                                 ID="pich" Automated="1"/>
                                       <Parameter MinValue="0.0" MaxValue="18.0" StepSize="1.0" ID="Window" Automated="1"/>
                                       <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="windowdiv"
                                                  Automated="1"/>
@@ -2616,7 +2254,7 @@
                               </Node>
                             </Nodes>
                             <Parameters>
-                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Value="16.0"/>
+                              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Automated="1"/>
                               <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="SplitSignal"
                                          Value="2.0"/>
                             </Parameters>
@@ -2688,13 +2326,13 @@
             </Parameters>
           </Node>
           <Node ID="clone4" FactoryPath="container.clone" Bypassed="0" ShowClones="0"
-                ShowParameters="1">
+                ShowParameters="1" Folded="1">
             <Properties>
               <Property ID="IsVertical" Value="0"/>
             </Properties>
             <Nodes>
               <Node ID="clone4_child" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -2756,7 +2394,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child18" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader18" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -2818,7 +2456,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child17" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader17" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -2880,7 +2518,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child13" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader13" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -2942,7 +2580,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child12" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader12" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3004,7 +2642,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child11" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader11" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3066,7 +2704,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child10" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader10" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3128,7 +2766,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child9" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader9" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3190,7 +2828,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child8" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader8" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3252,7 +2890,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child7" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader7" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3314,7 +2952,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child6" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader6" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3376,7 +3014,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child5" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader5" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3438,7 +3076,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child4" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader4" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3500,7 +3138,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child3" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader3" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3562,7 +3200,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child2" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader2" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3624,7 +3262,7 @@
                 <Parameters/>
               </Node>
               <Node ID="clone4_child1" FactoryPath="container.chain" Bypassed="0"
-                    NodeColour="4287927444" Folded="1">
+                    NodeColour="4287927444">
                 <Nodes>
                   <Node ID="xfader1" FactoryPath="control.xfader" Bypassed="0">
                     <Properties>
@@ -3687,7 +3325,7 @@
               </Node>
             </Nodes>
             <Parameters>
-              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Value="16.0"/>
+              <Parameter MinValue="1.0" MaxValue="16" StepSize="1.0" ID="NumClones" Automated="1"/>
               <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="SplitSignal"
                          Value="2.0"/>
             </Parameters>
@@ -3695,10 +3333,23 @@
         </Nodes>
         <Parameters/>
       </Node>
+      <Node ID="cable_table" FactoryPath="control.cable_table" Bypassed="0">
+        <ModulationTargets>
+          <Connection NodeId="gain32" ParameterId="Gain"/>
+        </ModulationTargets>
+        <ComplexData>
+          <Tables>
+            <Table Index="-1" EmbeddedData="60..........9C...vO....6....9C...vO...F8....9C...vO...j8....9C...vO...f+PdFO6C...vO"/>
+          </Tables>
+        </ComplexData>
+        <Parameters>
+          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
+        </Parameters>
+      </Node>
       <Node ID="gain32" FactoryPath="core.gain" Bypassed="0">
         <Parameters>
           <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                     SkewFactor="5.422270774841309" ID="Gain" Value="-24.39999887347223"/>
+                     SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
           <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
                      SkewFactor="0.3010300099849701" ID="Smoothing" Value="96.20000143349169"/>
           <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
@@ -3725,22 +3376,26 @@
       <Parameter ID="multi" MinValue="0.0" MaxValue="1.0" Value="0.2265625">
         <Connections>
           <Connection NodeId="ddiv" ParameterId="Value"/>
-          <Connection NodeId="clone_cable1" ParameterId="Value"/>
         </Connections>
       </Parameter>
       <Parameter ID="feed" MinValue="0.0" MaxValue="1.0" Value="0.4926859741210937">
         <Connections>
-          <Connection NodeId="dfeed" ParameterId="Value"/>
+          <Connection NodeId="pma1" ParameterId="Add"/>
         </Connections>
       </Parameter>
       <Parameter ID="limit" MinValue="0.0" MaxValue="1.0" Value="1.0">
         <Connections>
-          <Connection NodeId="pma1" ParameterId="Add"/>
+          <Connection NodeId="dfeed" ParameterId="Value"/>
         </Connections>
       </Parameter>
-      <Parameter ID="LIMITCONTTYPE" MinValue="0.0" MaxValue="1.0" Value="1.0">
+      <Parameter ID="stageno" MinValue="1.0" MaxValue="16.0" Value="1.0" StepSize="1.0">
         <Connections>
-          <Connection NodeId="clone_cable4" ParameterId="Value"/>
+          <Connection NodeId="clone4" ParameterId="NumClones"/>
+          <Connection NodeId="clone" ParameterId="NumClones"/>
+          <Connection NodeId="clone1" ParameterId="NumClones"/>
+          <Connection NodeId="clone3" ParameterId="NumClones"/>
+          <Connection NodeId="clone2" ParameterId="NumClones"/>
+          <Connection NodeId="cable_table" ParameterId="Value"/>
         </Connections>
       </Parameter>
       <Parameter ID="DelayMod" MinValue="0.0" MaxValue="1.0" Value="1.0">
@@ -3759,9 +3414,7 @@
         </Connections>
       </Parameter>
       <Parameter ID="DELDIVCONTROLTYPE" MinValue="0.0" MaxValue="1.0" Value="1.0">
-        <Connections>
-          <Connection NodeId="clone_cable2" ParameterId="Value"/>
-        </Connections>
+        <Connections/>
       </Parameter>
       <Parameter ID="MixMod" MinValue="-1.0" MaxValue="1.0" Value="-0.1184749755859376">
         <Connections>
@@ -3844,7 +3497,7 @@
           <Connection NodeId="clone_cable10" ParameterId="Value"/>
         </Connections>
       </Parameter>
-      <Parameter ID="psfine" MinValue="0.0" MaxValue="1.0" Value="1.0">
+      <Parameter ID="psfine" MinValue="0.0" MaxValue="1.0" Value="0.0">
         <Connections>
           <Connection NodeId="clone_cable11" ParameterId="Value"/>
           <Connection NodeId="clone_cable15" ParameterId="Value"/>
@@ -3941,13 +3594,18 @@
           <Connection NodeId="clone_cable14" ParameterId="Value"/>
         </Connections>
       </Parameter>
-      <Parameter ID="mixmoddest" MinValue="0.0" MaxValue="1.0" Value="1.0">
-        <Connections/>
+      <Parameter ID="mixmoddest" MinValue="0.0" MaxValue="16.0" Value="1.0" StepSize="1.0">
+        <Connections>
+          <Connection NodeId="global_mod1" ParameterId="Index"/>
+        </Connections>
       </Parameter>
       <Parameter ID="sprd" MinValue="-1.0" MaxValue="1.0" Value="1.0">
         <Connections>
           <Connection NodeId="clone_cable13" ParameterId="Value"/>
         </Connections>
+      </Parameter>
+      <Parameter ID="stages" MinValue="0.0" MaxValue="1.0" Value="1.0">
+        <Connections/>
       </Parameter>
     </Parameters>
   </Node>

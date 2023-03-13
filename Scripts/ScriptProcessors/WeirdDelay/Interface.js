@@ -156,6 +156,20 @@ inline function onmodtype5Control(component, value)
 
 Content.getComponent("modtype5").setControlCallback(onmodtype5Control);
 
+const var stages = Content.getComponent("stages");
+
+
+inline function onstagesControl(component, value)
+{
+Slot1.setAttribute(Slot1.stageno, value);
+Slot2.setAttribute(Slot2.stageno, value);
+Slot3.setAttribute(Slot3.stageno, value);
+};
+
+Content.getComponent("stages").setControlCallback(onstagesControl);
+
+
+
 const var MODSTO3 = Content.getComponent("MODSTO3");
 const var MODS4TO7 = Content.getComponent("MODS4TO7");
 const var MODPAGE = Content.getComponent("MODPAGE");

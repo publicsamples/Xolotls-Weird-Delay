@@ -13,7 +13,20 @@ using namespace snex::Types;
 
 namespace pitchshifter_impl
 {
-// ===========================| Node & Parameter type declarations |===========================
+// ============================| Node & Parameter type declarations |============================
+
+DECLARE_PARAMETER_RANGE_STEP(pma_modRange, 
+                             0., 
+                             12., 
+                             0.01);
+
+template <int NV>
+using pma_mod = parameter::from0To1<project::g<NV>, 
+                                    3, 
+                                    pma_modRange>;
+
+template <int NV>
+using pma_t = control::pma<NV, pma_mod<NV>>;
 
 template <int NV>
 using tempo_sync_t = wrap::mod<parameter::plain<project::g<NV>, 4>, 
@@ -22,14 +35,15 @@ using stereo_cable = cable::block<2>;
 
 namespace pitchshifter_t_parameters
 {
-// Parameter list for pitchshifter_impl::pitchshifter_t --------------------------------------
+// Parameter list for pitchshifter_impl::pitchshifter_t ----------------------------------------
 
 template <int NV>
 using xfda = parameter::plain<project::g<NV>, 0>;
 template <int NV>
 using shift = parameter::plain<project::g<NV>, 2>;
 template <int NV>
-using pich = parameter::plain<project::g<NV>, 3>;
+using pich = parameter::plain<pitchshifter_impl::pma_t<NV>, 
+                              0>;
 template <int NV>
 using Window = parameter::plain<pitchshifter_impl::tempo_sync_t<NV>, 
                                 0>;
@@ -49,12 +63,13 @@ using pitchshifter_t_plist = parameter::list<xfda<NV>,
 
 template <int NV>
 using pitchshifter_t_ = container::chain<pitchshifter_t_parameters::pitchshifter_t_plist<NV>, 
-                                         wrap::fix<2, tempo_sync_t<NV>>, 
+                                         wrap::fix<2, pma_t<NV>>, 
+                                         tempo_sync_t<NV>, 
                                          routing::receive<stereo_cable>, 
                                          project::g<NV>, 
                                          routing::send<stereo_cable>>;
 
-// ==============================| Root node initialiser class |==============================
+// ===============================| Root node initialiser class |===============================
 
 template <int NV> struct instance: public pitchshifter_impl::pitchshifter_t_<NV>
 {
@@ -75,8 +90,8 @@ template <int NV> struct instance: public pitchshifter_impl::pitchshifter_t_<NV>
             0x461C, 0x5800, 0x459B, 0x0000, 0x3F80, 0x0000, 0x3F80, 0x015B, 
             0x0000, 0x7300, 0x6968, 0x7466, 0x0000, 0x4000, 0x00C1, 0x4000, 
             0x0041, 0x4000, 0x0034, 0x8000, 0xCD3F, 0xCCCC, 0x5B3D, 0x0002, 
-            0x0000, 0x6970, 0x6863, 0x0000, 0x0000, 0x0000, 0x4000, 0x0041, 
-            0x0000, 0x0000, 0x8000, 0x0A3F, 0x23D7, 0x5B3C, 0x0003, 0x0000, 
+            0x0000, 0x6970, 0x6863, 0x0000, 0x0000, 0x0000, 0x8000, 0x003F, 
+            0x0000, 0x0000, 0x8000, 0x003F, 0x0000, 0x5B00, 0x0003, 0x0000, 
             0x6957, 0x646E, 0x776F, 0x0000, 0x0000, 0x0000, 0x9000, 0x0041, 
             0x0000, 0x0000, 0x8000, 0x003F, 0x8000, 0x5B3F, 0x0004, 0x0000, 
             0x6977, 0x646E, 0x776F, 0x6964, 0x0076, 0x0000, 0x3F80, 0x0000, 
@@ -89,20 +104,21 @@ template <int NV> struct instance: public pitchshifter_impl::pitchshifter_t_<NV>
 	
 	instance()
 	{
-		// Node References -------------------------------------------------------------------
+		// Node References ---------------------------------------------------------------------
 		
-		auto& tempo_sync = this->getT(0); // pitchshifter_impl::tempo_sync_t<NV>
-		auto& receive = this->getT(1);    // routing::receive<stereo_cable>
-		auto& faust = this->getT(2);      // project::g<NV>
-		auto& send = this->getT(3);       // routing::send<stereo_cable>
+		auto& pma = this->getT(0);        // pitchshifter_impl::pma_t<NV>
+		auto& tempo_sync = this->getT(1); // pitchshifter_impl::tempo_sync_t<NV>
+		auto& receive = this->getT(2);    // routing::receive<stereo_cable>
+		auto& faust = this->getT(3);      // project::g<NV>
+		auto& send = this->getT(4);       // routing::send<stereo_cable>
 		
-		// Parameter Connections -------------------------------------------------------------
+		// Parameter Connections ---------------------------------------------------------------
 		
 		this->getParameterT(0).connectT(0, faust); // xfda -> faust::Crossfade
 		
 		this->getParameterT(1).connectT(0, faust); // shift -> faust::PitchShift
 		
-		this->getParameterT(2).connectT(0, faust); // pich -> faust::SuperPitch
+		this->getParameterT(2).connectT(0, pma); // pich -> pma::Value
 		
 		this->getParameterT(3).connectT(0, tempo_sync); // Window -> tempo_sync::Tempo
 		
@@ -110,15 +126,20 @@ template <int NV> struct instance: public pitchshifter_impl::pitchshifter_t_<NV>
 		
 		this->getParameterT(5).connectT(0, receive); // Feedback -> receive::Feedback
 		
-		// Modulation Connections ------------------------------------------------------------
+		// Modulation Connections --------------------------------------------------------------
 		
-		tempo_sync.getParameter().connectT(0, faust); // tempo_sync -> faust::Window
+		pma.getWrappedObject().getParameter().connectT(0, faust); // pma -> faust::SuperPitch
+		tempo_sync.getParameter().connectT(0, faust);             // tempo_sync -> faust::Window
 		
-		// Send Connections ------------------------------------------------------------------
+		// Send Connections --------------------------------------------------------------------
 		
 		send.connect(receive);
 		
-		// Default Values --------------------------------------------------------------------
+		// Default Values ----------------------------------------------------------------------
+		
+		;                         // pma::Value is automated
+		pma.setParameterT(1, 1.); // control::pma::Multiply
+		pma.setParameterT(2, 0.); // control::pma::Add
 		
 		;                                // tempo_sync::Tempo is automated
 		;                                // tempo_sync::Multiplier is automated
@@ -154,7 +175,7 @@ template <int NV> struct instance: public pitchshifter_impl::pitchshifter_t_<NV>
 #undef setParameterT
 #undef setParameterWT
 #undef getParameterT
-// ===================================| Public Definition |===================================
+// ====================================| Public Definition |====================================
 
 namespace project
 {

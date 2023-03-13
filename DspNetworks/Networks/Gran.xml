@@ -40,7 +40,7 @@
             <Parameters>
               <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
               <Parameter MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
-                         ID="SmoothingTime" Value="530.1000078991054"/>
+                         ID="SmoothingTime" Automated="1"/>
               <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
             </Parameters>
           </Node>
@@ -62,13 +62,6 @@
                          ID="taille" Automated="1"/>
             </Parameters>
             <SwitchTargets/>
-          </Node>
-          <Node ID="smoother" FactoryPath="core.smoother" Bypassed="0">
-            <Parameters>
-              <Parameter MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                         SkewFactor="0.2313782125711441" ID="SmoothingTime" Automated="1"/>
-              <Parameter MinValue="0.0" MaxValue="1.0" ID="DefaultValue" Value="0.0"/>
-            </Parameters>
           </Node>
         </Nodes>
         <Parameters/>
@@ -107,10 +100,10 @@
           <Connection NodeId="smoothed_parameter" ParameterId="Value"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Smooth" MinValue="0.0" MaxValue="2000.0" StepSize="0.1000000014901161"
-                 SkewFactor="0.2313782125711441" Value="101.0000015050173">
+      <Parameter ID="Smooth" MinValue="0.1000000014901161" MaxValue="1000.0" StepSize="0.1000000014901161"
+                 Value="101.0000015050173">
         <Connections>
-          <Connection NodeId="smoother" ParameterId="SmoothingTime"/>
+          <Connection NodeId="smoothed_parameter" ParameterId="SmoothingTime"/>
         </Connections>
       </Parameter>
     </Parameters>

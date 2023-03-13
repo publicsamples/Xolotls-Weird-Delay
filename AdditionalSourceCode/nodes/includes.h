@@ -18,6 +18,7 @@
 
 #include "clone_networkdata.h"
 #include "delay_networkdata.h"
+#include "envin_networkdata.h"
 #include "Filter.h"
 #include "follower_networkdata.h"
 #include "Gran.h"
@@ -25,6 +26,7 @@
 #include "jdel.h"
 #include "mod_networkdata.h"
 #include "pitchshifter.h"
+#include "postfollow_networkdata.h"
 #include "Switch_networkdata.h"
 #include "wdelaymod_networkdata.h"
 #include "wdelay_networkdata.h"

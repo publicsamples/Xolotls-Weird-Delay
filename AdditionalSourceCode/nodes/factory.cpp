@@ -31,9 +31,11 @@ struct Factory: public scriptnode::dll::StaticLibraryHostFactory
 		registerPolyNode<project::pitchshifter<1>, wrap::illegal_poly<project::pitchshifter<1>>>();
 		registerDataNode<project::clone_networkdata>();
 		registerDataNode<project::delay_networkdata>();
+		registerDataNode<project::envin_networkdata>();
 		registerDataNode<project::follower_networkdata>();
 		registerDataNode<project::Granulator_networkdata>();
 		registerDataNode<project::mod_networkdata>();
+		registerDataNode<project::postfollow_networkdata>();
 		registerDataNode<project::Switch_networkdata>();
 		registerDataNode<project::wdelay_networkdata>();
 		registerDataNode<project::wdelaymod_networkdata>();
