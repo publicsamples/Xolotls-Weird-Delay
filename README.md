@@ -1,4 +1,4 @@
-# Xolotl's Weird Delay
+# Xolotls Weird Delay
 
 Early in it's development, Xolotl had a screwy little, 16 stage delay effect that got axed for being a CPU hog and generally sounding odd. 
 
