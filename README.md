@@ -2,7 +2,7 @@
 
 Early in it's development, Xolotl had a screwy little, 16 stage delay effect that got axed for being a CPU hog and generally sounding odd. 
 
-Xolotl's Weird Delay is an extended version of that delay. It features:
+Xolotls Weird Delay is an extended version of that delay. It features:
 
 - 3 freely assignable FX slots
 - Delay, Granular, Pitch shift and filter FX
